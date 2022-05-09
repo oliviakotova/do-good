@@ -1,0 +1,26 @@
+.App {
+    text-align: center;
+    margin:0px;
+    height:100vh;
+
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0) 100%
+    ), url('images/hands1.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+
+    background-size: cover;
+  }
+
+
+  /* .AppBody{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 10%;
+    height: 100%
+  } */
+  
