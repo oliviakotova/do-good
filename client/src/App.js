@@ -48,18 +48,22 @@ const App = () => {
   }
 
   return (
-    <div className="App d-flex flex-column min-vh-100">
-      <BrowserRouter>
-        <div className="">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {authToken && <Route path="/dashboard" element={<Dashboard />} />}
-            {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
-          </Routes>
-        </div>
-        <Toggle SwitchTheme={onThemeSwitch} />
-      </BrowserRouter>
-    </div>
+    <>
+      <div className="App d-flex flex-column min-vh-100">
+        <BrowserRouter>
+          <div className="">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {authToken && <Route path="/dashboard" element={<Dashboard />} />}
+              {authToken && (
+                <Route path="/onboarding" element={<OnBoarding />} />
+              )}
+            </Routes>
+          </div>
+          <Toggle SwitchTheme={onThemeSwitch} />
+        </BrowserRouter>
+      </div>
+    </>
   );
 };
 

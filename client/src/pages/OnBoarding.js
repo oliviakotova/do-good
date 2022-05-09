@@ -5,9 +5,6 @@ import axios from "axios";
 import { useState } from "react";
 //import Spinner from "../components/Spinner";
 
-// import { useFormik } from "formik";
-// import * as Yup from "yup";
-
 const OnBoarding = () => {
   const [cookies, setCookie, removeCookie] = useCookies("user");
 
