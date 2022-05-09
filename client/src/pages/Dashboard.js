@@ -28,6 +28,7 @@ const Dashboard = () => {
 
   //console.log('1', user)
 
+  // get all identified users
   const getIdentifiedUsers = async () => {
     try {
       const response = await axios.get(
