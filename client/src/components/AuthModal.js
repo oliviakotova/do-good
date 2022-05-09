@@ -3,26 +3,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-// import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner";
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
   const [email, setEmail] = useState(null);
-  //const [isLoading, setLoading] = useState(false);
+
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies("user");
-  // const [togle, setTogle] = useState("false");
+  const [togle, setTogle] = useState("false");
+  const [showLoading, setShowLoading] = useState(false);
 
   let navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (togle == "true") {
-  //     setTogle("false");
-  //   } else {
-  //     setTogle("true");
-  //   }
-  // }, [togle]);
 
   console.log(email, password, confirmPassword);
 
@@ -37,13 +30,18 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         setError("Passwords need to match.");
         return;
       }
-      // setTogle(true);
+
       //make a post request to our database with axios
       console.log("posting", email, password);
+
+      // start showing loading spinner
+      setShowLoading(true);
       const response = await axios.post(
         `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
         { email, password }
       );
+      // stop showing the loading spinner
+      setShowLoading(false);
 
       setCookie("AuthToken", response.data.token);
       setCookie("UserId", response.data.userId);
@@ -53,16 +51,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
 
       //then when singin will load with navigate (react-router-dom) onboarding page
       if (success && isSignUp) navigate("/onboarding");
-      // if (success && isSignUp) {
-      //   setTogle(false);
-      //   navigate("/onboarding");
-      // }
-      //if not singin will load with navigate (react-router-dom)  page
 
-      // if (success && !isSignUp) {
-      //   setTogle(false);
-      //   navigate("/dashboard");
-      // }
       if (success && !isSignUp) navigate("/dashboard");
       window.location.reload();
     } catch (error) {
@@ -70,10 +59,6 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
     }
   };
   return (
-    // <>
-    //   {togle ? (
-    //     <Spinner />
-    //   ) : (
     <div className="auth-modal">
       <div className="close-icon" onClick={handleClick}>
         X
@@ -137,11 +122,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         )}
         <input className="btn btn-primary m-4" type="submit" />
         <p>{error}</p>
+        {showLoading ? <Spinner /> : <></>}
       </form>
     </div>
-
-    //     )}
-    //   </>
   );
 };
 

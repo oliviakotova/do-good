@@ -10,16 +10,6 @@ import { useState } from "react";
 
 const OnBoarding = () => {
   const [cookies, setCookie, removeCookie] = useCookies("user");
-  //const [setLoading] = useState(false);
-  // const [togle, setTogle] = useState("false");
-
-  // useEffect(() => {
-  //   if (togle == "true") {
-  //     setTogle("false");
-  //   } else {
-  //     setTogle("true");
-  //   }
-  // }, [togle]);
 
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
@@ -39,7 +29,7 @@ const OnBoarding = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //setLoading(true);
+
     try {
       const response = await axios.put("http://localhost:8000/user", {
         formData,
@@ -48,7 +38,6 @@ const OnBoarding = () => {
       console.log(response);
       if (success) navigate("/dashboard");
       if (success) {
-        // setTogle(false);
         navigate("/dashboard");
       }
     } catch (err) {
@@ -72,9 +61,7 @@ const OnBoarding = () => {
   return (
     <>
       <Nav minimal={true} setShowModal={() => {}} showModal={false} />
-      {/* {togle ? (
-        <Spinner />
-      ) : ( */}
+
       <div
         className="card w-100
        d-flex flex-column justify-content-center align-items-center"
@@ -100,10 +87,6 @@ const OnBoarding = () => {
               onChange={handleChange}
             />
           </div>
-
-          {/* <span className={errorClassName}>
-              {errors.first_name && "Invalid first name"}
-            </span> */}
 
           <label>Birthday</label>
           <div className="input-group gap-2 mb-4">
@@ -276,7 +259,6 @@ const OnBoarding = () => {
           <input className="btn btn-primary m-2" type="submit" />
         </form>
       </div>
-      {/* )} */}
     </>
   );
 };
