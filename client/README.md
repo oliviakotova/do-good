@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+Volunteering is a great way to give back to your community. The JK app makes it easier than ever to get involved. The idea behind the app-only service to remove the barriers that often put people off giving up their time by automating as much as possible.
+DO GOOD app is a platform where people in need can place their request for need of help and its details and volunteers who can see that list of tasks in their local and willing to provide help in their free time.
+
+The tools used to implement this project and provide a feature rich experience
+are:
+FrontEnd —— React JS
+BackEnd —— express Node JS
+Database —— Atlas MonogoDB
+
+## Getting Started with Create React App and Pre-requirements
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+`Do-Good App` has two parts: frontend and backend.
 
-In the project directory, you can run:
+To be able running and testing Do-Good App locally it's required to have `npm` installed in the system.
+The easiest way to install `npm` is by doing so via `brew` through the Terminal.
 
-### `npm start`
+Open Terminal and type the command to install the `brew`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+After installing check updates by using the command below
+
+# `brew update`
+
+Install `npm` through `brew` by using the command below
+
+# `brew install node`
+
+Test `npm` and `node` by using the commands below
+
+# `npm -v`
+
+# `node -v`
+
+If versions received in return `node` and `npm` installed correctly.
+
+## Running FrontEnd
+
+To run the frontend open Terminal and go to the `client` folder in Do-Good App parent folder:
+
+# `cd client`
+
+Then run the frontend:
+
+# `npm run start:frontend`
+
+Runs the app's frontend in the development mode.\
+If not opened automatically, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Running BackEnd
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run the backend open Terminal and go to the `server` folder in Do-Good App parent folder:
 
-### `npm run build`
+# `cd server`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then run the backend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# `npm run start:backend`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Runs the app's backend in the development mode [http://localhost:8000](http://localhost:8000)
 
-### `npm run eject`
+## Resolving crossplatform issues in development mode
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Do-Good App uses `bcrypt` node component and it's platform dependant ans being developed to be crossplatform currently.
+In case of having issues with starting backend due to incompatible architecture and code `ERR_DLOPEN_FAILED` appears it's required to reinstall `bcrypt`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Uninstall current `bcrypt` component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Go to `server` folder if elsewhere
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# `cd server`
 
-## Learn More
+Uninstall current `bcrypt` component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# `npm uninstall bcrypt`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Install `brypt` component
 
-### Code Splitting
+# `npm install bcrypt`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`bcrypt` component will be installed as per used platform automatically.
 
-### Analyzing the Bundle Size
+Run backend server for testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# `nom run start:backend`
