@@ -1,4 +1,5 @@
 const PORT = 8000;
+//const PORT = process.env.PORT || 8000;
 const express = require("express");
 const { MongoClient } = require("mongodb");
 //for generating unique user id
@@ -11,6 +12,15 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 //connect with mongodb
 const uri = process.env.URI;
+
+// const uri = process.env.MONGODB_URI;
+// mongoose
+//   .connect(MONGODB_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("Connected to mongo", MONGODB_URI))
+//   .catch(console.log);
 
 // for reading json
 const app = express();
