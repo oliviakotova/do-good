@@ -11,16 +11,25 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 //connect with mongodb
-const uri = process.env.URI;
+//const uri = process.env.URI;
+//console.log(uri);
+// const uri =
+//   "mongodb+srv://Olivia:voffa9-xicsar-tycZyq@cluster0.gfjmt.mongodb.net/Cluster0?retryWrites=true&w=majority";
 
-// const uri = process.env.MONGODB_URI;
-// mongoose
-//   .connect(MONGODB_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("Connected to mongo", MONGODB_URI))
-//   .catch(console.log);
+// connect Mongoose to your DB
+// var mongoose = require(‘mongoose’);
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:8000/your-app-name');
+// var mongoose = require(‘mongoose’);
+const mongoose = require("mongoose");
+
+const uri = process.env.MONGODB_URI;
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to mongo", uri))
+  .catch(console.log);
 
 // for reading json
 const app = express();
@@ -161,6 +170,7 @@ app.get("/user", async (req, res) => {
 });
 //query retyrning all identificated users who maches with logged user
 app.get("/users", async (req, res) => {
+  console.log("Get users request received");
   const client = new MongoClient(uri);
   const userIds = JSON.parse(req.query.userIds);
   //in console array [] with matched users id
@@ -215,6 +225,7 @@ app.get("/identified-users", async (req, res) => {
 
 //Method Put for updating user
 app.put("/user", async (req, res) => {
+  console.log("User Put request made");
   const client = new MongoClient(uri);
   const formData = req.body.formData;
 
@@ -246,6 +257,7 @@ app.put("/user", async (req, res) => {
 });
 
 app.put("/addmatch", async (req, res) => {
+  console.log("Add match put received");
   const client = new MongoClient(uri);
   const { userId, matchedUserId } = req.body;
 

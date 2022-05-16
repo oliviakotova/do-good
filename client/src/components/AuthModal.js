@@ -37,7 +37,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       // start showing loading spinner
       setShowLoading(true);
       const response = await axios.post(
-        `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
+        `https://dogood-done-server.herokuapp.com:8000/${
+          isSignUp ? "signup" : "login"
+        }`,
         { email, password }
       );
       // stop showing the loading spinner

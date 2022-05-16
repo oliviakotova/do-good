@@ -19,7 +19,6 @@
     "react-tinder-card": "^1.4.5",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.5.3",
-    " ": "^6.5.3",
     "workbox-cacheable-response": "^6.5.3",
     "workbox-core": "^6.5.3",
     "workbox-expiration": "^6.5.3",

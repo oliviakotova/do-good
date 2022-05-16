@@ -15,7 +15,7 @@ const Dashboard = () => {
   const getUser = async () => {
     try {
       await axios
-        .get("http://localhost:8000/user", {
+        .get("https://dogood-done-server.herokuapp.com:8000/user", {
           params: { userId },
         })
         .then((response) => {
@@ -32,7 +32,7 @@ const Dashboard = () => {
   const getIdentifiedUsers = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/identified-users",
+        "https://dogood-done-server.herokuapp.com:8000/identified-users",
         {
           params: { ident: user?.interest },
         }
@@ -62,10 +62,13 @@ const Dashboard = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put("http://localhost:8000/addmatch", {
-        userId,
-        matchedUserId,
-      });
+      await axios.put(
+        "https://dogood-done-server.herokuapp.com:8000/addmatch",
+        {
+          userId,
+          matchedUserId,
+        }
+      );
       getUser();
     } catch (error) {
       console.log(error);
