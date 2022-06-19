@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import ChatContainer from "../components/ChatContainer";
 import axios from "axios";
-
+import Utils from "../Utilities";
+let API_URL = Utils.API_URL;
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [identifiedUsers, setIdentifiedUsers] = useState(null);
@@ -15,7 +16,7 @@ const Dashboard = () => {
   const getUser = async () => {
     try {
       await axios
-        .get("https://dogood-done-server.herokuapp.com:8000/user", {
+        .get(`${API_URL}/user`, {
           params: { userId },
         })
         .then((response) => {
@@ -31,12 +32,9 @@ const Dashboard = () => {
   // get all identified users
   const getIdentifiedUsers = async () => {
     try {
-      const response = await axios.get(
-        "https://dogood-done-server.herokuapp.com:8000/identified-users",
-        {
-          params: { ident: user?.interest },
-        }
-      );
+      const response = await axios.get(`${API_URL}/identified-users`, {
+        params: { ident: user?.interest },
+      });
       setIdentifiedUsers(response.data);
     } catch (error) {
       console.log(error);
@@ -62,13 +60,10 @@ const Dashboard = () => {
 
   const updateMatches = async (matchedUserId) => {
     try {
-      await axios.put(
-        "https://dogood-done-server.herokuapp.com:8000/addmatch",
-        {
-          userId,
-          matchedUserId,
-        }
-      );
+      await axios.put(`${API_URL}/addmatch`, {
+        userId,
+        matchedUserId,
+      });
       getUser();
     } catch (error) {
       console.log(error);

@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Chat from "./Chat";
 import ChatInput from "./ChatInput";
+import Utils from "../Utilities";
+
+let API_URL = Utils.API_URL;
 
 //display user and this clicked user
 const ChatDisplay = ({ user, clickedUser }) => {
@@ -15,7 +18,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   // get all messages from user to corresponding(chosen) user
   const getUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/messages", {
+      const response = await axios.get(`${API_URL}/messages`, {
         params: { userId: userId, correspondingUserId: clickedUserId },
       });
 
@@ -28,7 +31,7 @@ const ChatDisplay = ({ user, clickedUser }) => {
   // get messages from corresponding(chosen) user to logged user
   const getClickedUsersMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/messages", {
+      const response = await axios.get(`${API_URL}/messages`, {
         params: { userId: clickedUserId, correspondingUserId: userId },
       });
 

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 //import Spinner from "../components/Spinner";
+import Utils from "../Utilities";
+let API_URL = Utils.API_URL;
 
 const OnBoarding = () => {
   const [cookies, setCookie, removeCookie] = useCookies("user");
@@ -20,6 +22,7 @@ const OnBoarding = () => {
     url: "",
     about: "",
     matches: [],
+    timestamp: new Date().toISOString(),
   });
 
   let navigate = useNavigate();
@@ -28,12 +31,9 @@ const OnBoarding = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(
-        "https://dogood-done-server.herokuapp.com:8000/user",
-        {
-          formData,
-        }
-      );
+      const response = await axios.put(`${API_URL}/user`, {
+        formData,
+      });
       const success = response.status === 200;
       console.log(response);
       if (success) navigate("/dashboard");
@@ -81,7 +81,7 @@ const OnBoarding = () => {
               className="form-control w-100 "
               placeholder="First name"
               required={true}
-              pattern=".{2,32}"
+              pattern="[A-Za-z]{2,32}"
               title="Two or more characters, maximum 32 characters "
               value={formData.first_name}
               onChange={handleChange}

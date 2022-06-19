@@ -2,8 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-
+import Help from "./Help";
 import Spinner from "../components/Spinner";
+import Utils from "../Utilities";
+
+let API_URL = Utils.API_URL;
 
 const AuthModal = ({ setShowModal, isSignUp }) => {
   const [email, setEmail] = useState(null);
@@ -14,10 +17,15 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   const [cookies, setCookie, removeCookie] = useCookies("user");
   const [togle, setTogle] = useState("false");
   const [showLoading, setShowLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   let navigate = useNavigate();
 
-  console.log(email, password, confirmPassword);
+  //console.log(email, password, confirmPassword);
 
   const handleClick = () => {
     setShowModal(false);
@@ -37,9 +45,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       // start showing loading spinner
       setShowLoading(true);
       const response = await axios.post(
-        `https://dogood-done-server.herokuapp.com:8000/${
-          isSignUp ? "signup" : "login"
-        }`,
+        `${API_URL}/${isSignUp ? "signup" : "login"}`,
         { email, password }
       );
       // stop showing the loading spinner
@@ -58,6 +64,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       window.location.reload();
     } catch (error) {
       console.log(error);
+      setError(error.response.data);
     }
   };
   return (
@@ -65,6 +72,7 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       <div className="close-icon" onClick={handleClick}>
         X
       </div>
+
       <h2 className="m-4">{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h2>
 
       <form
@@ -124,6 +132,27 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         )}
         <input className="btn btn-primary m-4" type="submit" />
         <p>{error}</p>
+        <div className="info-icon2" onClick={togglePopup}>
+          <i className="bi bi-question-circle"></i>
+          <p>Need help?</p>
+        </div>
+        {isOpen && (
+          <Help
+            content={
+              <>
+                <h2 className="m-4">Helping information for LOG IN </h2>
+                <p>
+                  Please fill up the form completely including your email,
+                  create and remember your password. The password has to contain
+                  at least one uppercase letter, one number, one lowercase
+                  letter and has to be eight character long minimum. Please
+                  contact us if you have any issue.
+                </p>
+              </>
+            }
+            handleClose={togglePopup}
+          />
+        )}
         {showLoading ? <Spinner /> : <></>}
       </form>
     </div>

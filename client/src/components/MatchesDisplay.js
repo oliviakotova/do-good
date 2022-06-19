@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import Utils from "../Utilities";
+
+let API_URL = Utils.API_URL;
 
 const MatchesDisplay = ({ matches, setClickedUser }) => {
   const [matchedProfiles, setMatchedProfiles] = useState(null);
@@ -13,7 +16,7 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
   // sending to localhost:8000/users an array of match user ids
   const getMatches = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/users", {
+      const response = await axios.get(`${API_URL}/users`, {
         params: { userIds: JSON.stringify(matchedUserIds) },
       });
       setMatchedProfiles(response.data);
@@ -26,12 +29,14 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
     getMatches();
   }, [matches]);
 
-  //function whis that only maches users whu mashed together
+  //function whis that only maches users who mashed together
 
-  // const filteredIdentifiedProfiles = matchedProfiles?.filter((matchedProfile) => matchedProfile.matches.filter((profile) => profile.user_id == userId)
-  // .lengh > 0
-  // )
-  //console.log(matchedProfiles);
+  // const filteredIdentifiedProfiles = matchedProfiles?.filter(
+  //   (matchedProfile) =>
+  //     matchedProfile.matches.filter((profile) => profile.user_id == userId)
+  //       .lengh > 0
+  // );
+  // console.log(matchedProfiles);
 
   //if matches profili exist show eatch match profile vith index-key
   //if replace matchedProfile? to filteredIdentifiedProfiles then match will be between both chousen peoples
