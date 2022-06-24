@@ -5,8 +5,7 @@ Do good volunteering app is a platform where people in need can place their requ
 The tools used to implement this project and provide a feature rich experience are:
 FrontEnd —— ReactJS
 BackEnd ——express NodeJS
-Database —— MonogoDB Atlas![Screen Shot 2022-06-24 at 3 08 36 pm](https://user-images.githubusercontent.com/56949536/175466429-e2a614ec-fd59-4c98-aa17-32af726d11a8.png)
-
+Database —— MonogoDB Atlas!
 
 ## Getting Started with Create React App and Pre-requirements
 
