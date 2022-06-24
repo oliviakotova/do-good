@@ -15,7 +15,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 client side(frontend) deployed on https://dogood-done.herokuapp.com/
 
-![Screen Shot 2022-06-24 at 3 34 17 pm](https://user-images.githubusercontent.com/56949536/175469143-d1774caa-7092-4960-a97a-48669caadd40.png)
 
 ![Screen Shot 2022-06-24 at 3 25 29 pm](https://user-images.githubusercontent.com/56949536/175468184-3307dd3c-ea58-4a30-9baf-ef8c18d1cc1e.png)
 ![Screen Shot 2022-06-24 at 3 29 57 pm](https://user-images.githubusercontent.com/56949536/175468666-15122fb1-9eb8-4767-b064-7394e288879e.png)
@@ -23,7 +22,7 @@ client side(frontend) deployed on https://dogood-done.herokuapp.com/
 
 admin side deployed on https://dogood-done-admin.herokuapp.com/
 
-![Screen Shot 2022-06-24 at 3 15 36 pm](https://user-images.githubusercontent.com/56949536/175467111-c2b3d4c9-a84b-4da1-ae59-6a3e87c592fe.png)
+![Screen Shot 2022-06-24 at 3 34 17 pm](https://user-images.githubusercontent.com/56949536/175469143-d1774caa-7092-4960-a97a-48669caadd40.png)
 ![Screen Shot 2022-06-24 at 3 16 55 pm](https://user-images.githubusercontent.com/56949536/175467265-b1b0ca52-a09e-4e68-899d-ce05dcb18181.png)
 
 To be able running and testing Do-Good App locally it's required to have `npm` installed in the system.
