@@ -20,7 +20,7 @@ client side(frontend) deployed on https://dogood-done.herokuapp.com/
 ![Screen Shot 2022-06-24 at 3 29 57 pm](https://user-images.githubusercontent.com/56949536/175468666-15122fb1-9eb8-4767-b064-7394e288879e.png)
 
 
-admin side deployed on https://dogood-done-admin.herokuapp.com/
+admin panel deployed on https://dogood-done-admin.herokuapp.com/
 
 ![Screen Shot 2022-06-24 at 3 34 17 pm](https://user-images.githubusercontent.com/56949536/175469143-d1774caa-7092-4960-a97a-48669caadd40.png)
 ![Screen Shot 2022-06-24 at 3 16 55 pm](https://user-images.githubusercontent.com/56949536/175467265-b1b0ca52-a09e-4e68-899d-ce05dcb18181.png)
