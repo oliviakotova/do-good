@@ -15,7 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 client side(frontend) deployed on https://dogood-done.herokuapp.com/
 
-![Screen Shot 2022-06-24 at 3 24 50 pm](https://user-images.githubusercontent.com/56949536/175468101-8a4a738d-6303-4a16-8108-1d204ce8c3f8.png)
+![Screen Shot 2022-06-24 at 3 34 17 pm](https://user-images.githubusercontent.com/56949536/175469143-d1774caa-7092-4960-a97a-48669caadd40.png)
+
 ![Screen Shot 2022-06-24 at 3 25 29 pm](https://user-images.githubusercontent.com/56949536/175468184-3307dd3c-ea58-4a30-9baf-ef8c18d1cc1e.png)
 ![Screen Shot 2022-06-24 at 3 29 57 pm](https://user-images.githubusercontent.com/56949536/175468666-15122fb1-9eb8-4767-b064-7394e288879e.png)
 
