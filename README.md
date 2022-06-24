@@ -7,9 +7,6 @@ FrontEnd —— ReactJS
 BackEnd ——express NodeJS
 <<<<<<< HEAD
 Database —— MongoDB Atlas
-=======
-Database —— MonogoDB Atlas!
->>>>>>> ead7cca6eae8cb8988faeeb218402313f4797389
 
 ## Getting Started with Create React App and Pre-requirements
 
@@ -22,7 +19,6 @@ client side(frontend) deployed on https://dogood-done.herokuapp.com/
 ![Screen Shot 2022-06-24 at 3 37 28 pm](https://user-images.githubusercontent.com/56949536/175469530-76f600ea-ee6c-4388-b3c8-9ee331d2f1e7.png)
 ![Screen Shot 2022-06-24 at 3 25 29 pm](https://user-images.githubusercontent.com/56949536/175468184-3307dd3c-ea58-4a30-9baf-ef8c18d1cc1e.png)
 ![Screen Shot 2022-06-24 at 3 29 57 pm](https://user-images.githubusercontent.com/56949536/175468666-15122fb1-9eb8-4767-b064-7394e288879e.png)
-
 
 admin panel deployed on https://dogood-done-admin.herokuapp.com/
 
