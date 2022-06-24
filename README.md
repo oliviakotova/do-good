@@ -5,13 +5,29 @@ Do good volunteering app is a platform where people in need can place their requ
 The tools used to implement this project and provide a feature rich experience are:
 FrontEnd —— ReactJS
 BackEnd ——express NodeJS
+<<<<<<< HEAD
 Database —— MongoDB Atlas
+=======
+Database —— MonogoDB Atlas!
+>>>>>>> ead7cca6eae8cb8988faeeb218402313f4797389
 
 ## Getting Started with Create React App and Pre-requirements
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-`Do-Good App` has two parts: frontend and backend.
+`Do-Good App` has three parts: frontend, admin panel and backend.
+
+client side(frontend) deployed on https://dogood-done.herokuapp.com/
+
+![Screen Shot 2022-06-24 at 3 37 28 pm](https://user-images.githubusercontent.com/56949536/175469530-76f600ea-ee6c-4388-b3c8-9ee331d2f1e7.png)
+![Screen Shot 2022-06-24 at 3 25 29 pm](https://user-images.githubusercontent.com/56949536/175468184-3307dd3c-ea58-4a30-9baf-ef8c18d1cc1e.png)
+![Screen Shot 2022-06-24 at 3 29 57 pm](https://user-images.githubusercontent.com/56949536/175468666-15122fb1-9eb8-4767-b064-7394e288879e.png)
+
+
+admin panel deployed on https://dogood-done-admin.herokuapp.com/
+
+![Screen Shot 2022-06-24 at 3 34 17 pm](https://user-images.githubusercontent.com/56949536/175469143-d1774caa-7092-4960-a97a-48669caadd40.png)
+![Screen Shot 2022-06-24 at 3 16 55 pm](https://user-images.githubusercontent.com/56949536/175467265-b1b0ca52-a09e-4e68-899d-ce05dcb18181.png)
 
 To be able running and testing Do-Good App locally it's required to have `npm` installed in the system.
 The easiest way to install `npm` is by doing so via `brew` through the Terminal.
@@ -119,7 +135,7 @@ If not opened automatically, open [http://localhost:3000](http://localhost:3000)
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-Technology used in admin:
+Technology used in admin panel:
 "axios": "^0.26.1", Promise based HTTP client for the browser and node.js
 "bootstrap": "^5.1.3", Bootstrap is a powerful, feature-packed frontend toolkit.
 "bootstrap-icons": "^1.8.1", icons for bootstrap
@@ -159,4 +175,4 @@ Install `brypt` component
 
 Run backend server for testing
 
-# `nom run start:backend`
+# `npm run start:backend`
