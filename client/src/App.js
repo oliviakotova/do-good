@@ -1,5 +1,5 @@
 import "./App.css";
-import Toggle from "./components/Toggle";
+// import Toggle from "./components/Toggle";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import OnBoarding from "./pages/OnBoarding";
@@ -60,7 +60,7 @@ const App = () => {
               )}
             </Routes>
           </div>
-          <Toggle SwitchTheme={onThemeSwitch} />
+          {/* <Toggle SwitchTheme={onThemeSwitch} /> */}
         </BrowserRouter>
       </div>
     </>
