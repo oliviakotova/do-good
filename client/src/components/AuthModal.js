@@ -102,9 +102,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
           <input
             type="password"
             id="password"
-            autoComplete="passwordl"
+            autoComplete="password"
             className="form-control w-75 m-4"
-            name="passwordl"
+            name="password"
             placeholder="password"
             required={true}
             pattern=".{8,}"

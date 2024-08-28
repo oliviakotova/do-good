@@ -76,6 +76,7 @@ const corsOptions = {
   credentials: true,
   origin: [
     "http://localhost:3000",
+    "http://localhost:8080",
     "https://dogood-done.herokuapp.com",
     "https://dogood-done-admin.herokuapp.com",
   ],
@@ -124,7 +125,7 @@ app.post("/signup", async (req, res) => {
   ///sending over to database
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     //check if user already exists
     const existingUser = await users.findOne({ email });
@@ -162,7 +163,7 @@ app.post("/login", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
 
     //find the user with uniq email exists
@@ -201,7 +202,7 @@ app.post("/signupadmin", async (req, res) => {
   ///sending over to database
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const admins = database.collection("admins");
     //check if user already exists
     const existingAdmin = await admins.findOne({ email });
@@ -211,7 +212,7 @@ app.post("/signupadmin", async (req, res) => {
     }
     // sanitize and make sure email just with lower letters
     const sanitizedEmail = email.toLowerCase();
-    //this is wil sended to the database
+    //this is will sent to the database
     const data = {
       admin_id: generatedAdminId,
       email: sanitizedEmail,
@@ -253,7 +254,7 @@ app.post("/new_user", async (req, res) => {
   ///sending over to database
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     //check if user already exists
     const existingUser = await users.findOne({ email });
@@ -286,7 +287,7 @@ app.post("/loginadmin", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const admins = database.collection("admins");
 
     //find the user with uniq email exists
@@ -323,7 +324,7 @@ app.get("/user", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
 
     const query = { user_id: userId };
@@ -346,7 +347,7 @@ app.get("/users", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
 
     const pipeline = [
@@ -378,7 +379,7 @@ app.get("/identified-users", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     //ident 'volunteer'
     const query = { identity: { $eq: "volunteer" } };
@@ -398,7 +399,7 @@ app.get("/user/:userId", async (req, res) => {
   // console.log('userId', userId)
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     const query = { _id: ObjectId(userId) };
     // console.log(query);
@@ -417,7 +418,7 @@ app.post("/user/:userId", async (req, res) => {
   // console.log('userId', userId)
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     const query = { _id: ObjectId(userId) };
     // console.log(query);
@@ -439,7 +440,7 @@ app.get("/all-users", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const allusers = database.collection("users");
     const query = {};
     const foundAllusers = await allusers.find(query).toArray();
@@ -459,7 +460,7 @@ app.get("/all-messages", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const allmessages = database.collection("messages");
     const query = {};
     const foundAllmessages = await allmessages.find(query).toArray();
@@ -471,59 +472,59 @@ app.get("/all-messages", async (req, res) => {
   }
 });
 
-// //sending data to a database, POST1
-// app.post("/useradmin", async (req, res) => {
-//   const client = new MongoClient(uri);
-//   const { email, password } = req.body;
-//   //for generating unique user id
-//   const generatedUserId = uuidv4();
-//   //for hashing password with bcrypt
-//   const hashedPassword = await bcrypt.hash(password, 10);
+//sending data to a database, POST1
+app.post("/useradmin", async (req, res) => {
+  const client = new MongoClient(uri);
+  const { email, password } = req.body;
+  //for generating unique user id
+  const generatedUserId = uuidv4();
+  //for hashing password with bcrypt
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-//   ///sending over to database
-//   try {
-//     await client.connect();
-//     const database = client.db("good_data");
-//     const users = database.collection("users");
-//     //check if user already exists
-//     const existingUser = await users.findOne({ email });
+  ///sending over to database
+  try {
+    await client.connect();
+    const database = client.db("app-data");
+    const users = database.collection("users");
+    //check if user already exists
+    const existingUser = await users.findOne({ email });
 
-//     if (existingUser) {
-//       return res.status(409).send("User already exists.");
-//     }
-//     // sanitize and make sure email just with lower letters
-//     const sanitizedEmail = email.toLowerCase();
-//     //this is wil sended to the database
-//     const data = {
-//       user_id: generatedUserId,
-//       email: sanitizedEmail,
-//       hashed_password: hashedPassword,
-//       first_name: formData.first_name,
-//       dob_day: formData.dob_day,
-//       dob_month: formData.dob_month,
-//       dob_year: formData.dob_year,
-//       show_identity: formData.show_identity,
-//       identity: formData.identity,
-//       interest: formData.interest,
-//       url: formData.url,
-//       about: formData.about,
-//       matches: formData.matches,
-//     };
-//     //and safe in mongodb one new
-//     const insertedUser = await users.insertOne(data);
+    if (existingUser) {
+      return res.status(409).send("User already exists.");
+    }
+    // sanitize and make sure email just with lower letters
+    const sanitizedEmail = email.toLowerCase();
+    //this is wil sended to the database
+    const data = {
+      user_id: generatedUserId,
+      email: sanitizedEmail,
+      hashed_password: hashedPassword,
+      first_name: formData.first_name,
+      dob_day: formData.dob_day,
+      dob_month: formData.dob_month,
+      dob_year: formData.dob_year,
+      show_identity: formData.show_identity,
+      identity: formData.identity,
+      interest: formData.interest,
+      url: formData.url,
+      about: formData.about,
+      matches: formData.matches,
+    };
+    //and safe in mongodb one new
+    const insertedUser = await users.insertOne(data);
 
-//     //generated a token  with json webtoken pakage
-//     const token = jwt.sign(insertedUser, sanitizedEmail, {
-//       //token will expire in 24 hours
-//       expiresIn: 60 * 24,
-//     });
-//     res.status(201).json({ token, userId: generatedUserId });
-//   } catch (err) {
-//     console.log(err);
-//   } finally {
-//     await client.close();
-//   }
-// });
+    //generated a token  with json webtoken pakage
+    const token = jwt.sign(insertedUser, sanitizedEmail, {
+      //token will expire in 24 hours
+      expiresIn: 60 * 24,
+    });
+    res.status(201).json({ token, userId: generatedUserId });
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await client.close();
+  }
+});
 
 //Method Put for updating user
 app.put("/user", async (req, res) => {
@@ -533,7 +534,7 @@ app.put("/user", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
 
     const query = { user_id: formData.user_id };
@@ -573,7 +574,7 @@ app.put("/useradmond", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
 
     const query = { user_id: formData.user_id };
@@ -611,7 +612,7 @@ app.put("/addmatch", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     // user who is sing in
     const query = { user_id: userId };
@@ -632,7 +633,7 @@ app.get("/messages", async (req, res) => {
   //console.log(userId.correspondingUserId);
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
 
     //query for serching into a message collection looking for any logged user id o corresponding(clicked) user id
@@ -655,7 +656,7 @@ app.post("/message", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
     const insertedMessages = await messages.insertOne(message);
     res.send(insertedMessages);
@@ -670,7 +671,7 @@ app.post("/messageadmin", async (req, res) => {
 
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
     const data = {
       timestamp: new Date().toISOString(),
@@ -694,7 +695,7 @@ app.get("/message/:messageId", async (req, res) => {
   // console.log('messageId', messageId)
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
     const query = { _id: ObjectId(messageId) };
     // console.log(query);
@@ -714,11 +715,11 @@ app.patch("/message/:messageId", async (req, res) => {
   //console.log("messageId", messageId);
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
 
     const fields = JSON.parse(req.body.messageData);
-    console.log(fields.about);
+    //console.log(fields.about);
     const message = await messages.findOneAndUpdate(
       { _id: ObjectId(messageId) },
       {
@@ -740,7 +741,7 @@ app.delete("/message/:messageId", async (req, res) => {
   //console.log("messageId", messageId);
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const messages = database.collection("messages");
     const query = { _id: ObjectId(messageId) };
     const deleteMessage = await messages.deleteOne(query);
@@ -757,7 +758,7 @@ app.delete("/user/:userId", async (req, res) => {
   //console.log("userId", userId);
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const user = database.collection("users");
     const query = { _id: ObjectId(userId) };
     const deleteUser = await user.deleteOne(query);
@@ -774,7 +775,7 @@ app.patch("/user/:userId", async (req, res) => {
   const userId = req.params.userId;
   try {
     await client.connect();
-    const database = client.db("good_data");
+    const database = client.db("app-data");
     const users = database.collection("users");
     //const query = { _id: ObjectId(userId) };
     // console.log(query);

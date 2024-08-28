@@ -8,7 +8,7 @@ const ChatInput = ({
   user,
   clickedUser,
   getUsersMessages,
-  getClickedUserMessages,
+  //getClickedUserMessages,
 }) => {
   const [textArea, setTextArea] = useState("");
   const userId = user?.user_id;
@@ -27,7 +27,7 @@ const ChatInput = ({
         message,
       });
       getUsersMessages();
-      getClickedUserMessages();
+      //getClickedUserMessages();
       setTextArea("");
     } catch (error) {
       console.log(error);

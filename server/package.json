@@ -7,7 +7,7 @@
     "start:backend": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Olivia/Olha Kotova",
+  "author": "Olivia Kotova",
   "license": "ISC",
   "dependencies": {
     "alert": "^5.0.12",

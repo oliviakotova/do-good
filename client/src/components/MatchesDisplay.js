@@ -31,12 +31,12 @@ const MatchesDisplay = ({ matches, setClickedUser }) => {
 
   //function whis that only maches users who mashed together
 
-  // const filteredIdentifiedProfiles = matchedProfiles?.filter(
-  //   (matchedProfile) =>
-  //     matchedProfile.matches.filter((profile) => profile.user_id == userId)
-  //       .lengh > 0
-  // );
-  // console.log(matchedProfiles);
+  const filteredIdentifiedProfiles = matchedProfiles?.filter(
+    (matchedProfile) =>
+      matchedProfile.matches.filter((profile) => profile.user_id === userId)
+        .lengh > 0
+  );
+  //console.log(matchedProfiles);
 
   //if matches profili exist show eatch match profile vith index-key
   //if replace matchedProfile? to filteredIdentifiedProfiles then match will be between both chousen peoples

@@ -77,6 +77,7 @@ const OnBoarding = () => {
             <input
               id="first_name"
               type="text"
+              autoComplete="first-name"
               name="first_name"
               className="form-control w-100 "
               placeholder="First name"
@@ -92,6 +93,7 @@ const OnBoarding = () => {
           <div className="input-group gap-2 mb-4">
             <input
               id="dob_day"
+              autoComplete="bday-day"
               type="number"
               name="dob_day"
               className="form-control w-25 m-2"
@@ -103,6 +105,7 @@ const OnBoarding = () => {
 
             <input
               id="dob_month"
+              autoComplete="bday-month"
               type="number"
               name="dob_month"
               className="form-control w-25 m-2"
@@ -114,6 +117,7 @@ const OnBoarding = () => {
 
             <input
               id="dob_year"
+              autoComplete="bday-year"
               type="number"
               name="dob_year"
               className="form-control w-25 m-2"
@@ -222,6 +226,7 @@ const OnBoarding = () => {
               <textarea
                 className="form-control"
                 id="about"
+                autoComplete="text"
                 type="text"
                 name="about"
                 required={true}
@@ -237,6 +242,7 @@ const OnBoarding = () => {
             <label htmlFor="url">Profile Photo</label>
             <input
               type="url"
+              autoComplete="photo"
               name="url"
               className="form-control w-100"
               id="url"
