@@ -2,29 +2,33 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 const ChatHeader = ({ user }) => {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies, removeCookie] = useCookies(["user"]);
 
   let navigate = useNavigate();
 
   const logout = () => {
     removeCookie("UserId", cookies.UserId);
     removeCookie("AuthToken", cookies.AuthToken);
+    removeCookie("AdminId", cookies.AdminId);
+
     //reloading the page
-    window.location.reload();
+    //window.location.reload();
     navigate("/");
   };
 
   return (
-    <div className="chat-container-header">
-      <div className="profile">
-        <div className="img-container" alt="hands together">
-          <img src={user.url} alt={"photo of " + user.first_name} />
+    <div>
+      <div className="chat-container-header">
+        <div className="profile">
+          <div className="img-container" alt="hands together">
+            <img src={user.url} alt={"photo of " + user.first_name} />
+          </div>
+          <h3>{user.first_name}</h3>
         </div>
-        <h3>{user.first_name}</h3>
+        <i className="log-out-icon" onClick={logout}>
+          ⇦
+        </i>
       </div>
-      <i className="log-out-icon" onClick={logout}>
-        ⇦
-      </i>
     </div>
   );
 };

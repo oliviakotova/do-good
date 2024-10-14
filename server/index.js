@@ -115,7 +115,7 @@ app.post("/signup", async (req, res) => {
   } catch {
     res.status(400).send("Unknown error");
   }
-  console.log(req.body);
+  //console.log(req.body);
   const { email, password } = req.body;
   //for generating unique user id
   const generatedUserId = uuidv4();
@@ -244,7 +244,7 @@ app.post("/new_user", async (req, res) => {
   } catch {
     res.status(400).send("Unknown error");
   }
-  console.log(req.body);
+  //console.log(req.body);
   const { email, password } = req.body;
   //for generating unique user id
   const generatedUserId = uuidv4();
@@ -781,7 +781,7 @@ app.patch("/user/:userId", async (req, res) => {
     // console.log(query);
 
     const fields = JSON.parse(req.body.userData);
-    console.log(fields.about);
+    // console.log(fields.about);
     const user = await users.findOneAndUpdate(
       { _id: ObjectId(userId) },
       {

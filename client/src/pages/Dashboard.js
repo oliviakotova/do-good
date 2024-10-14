@@ -50,10 +50,10 @@ const Dashboard = () => {
       getIdentifiedUsers();
     }
   }, [user]);
-  // useEffect(() => {
-  //   getUser();
-  //   getIdentifiedUsers();
-  // }, [user, identifiedUsers]);
+  useEffect(() => {
+    getUser();
+    getIdentifiedUsers();
+  }, [user, identifiedUsers]);
 
   //console.log("user", user);
   //console.log("identified users", identifiedUsers);
