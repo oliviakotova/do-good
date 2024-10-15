@@ -57,7 +57,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "Volunteering is a great way to give back to your community. The JK app makes it easier than ever to get involved. The idea behind the app-only service to remove the barriers that often put people off giving up their time by automating as much as possible. DO GOOD app is a platform where people in need can place their request for need of help and its details and volunteers who can see that list of tasks in their local and willing to provide help in their free time.",
+  "description": "Volunteering is a great way to give back to your community. The Do Good app makes it easier than ever to get involved. The idea behind the app-only service to remove the barriers that often put people off giving up their time by automating as much as possible. DO GOOD app is a platform where people in need can place their request for need of help and its details and volunteers who can see that list of tasks in their local and willing to provide help in their free time.",
   "main": "index.js",
   "license": "ISC"
 }

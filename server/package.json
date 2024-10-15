@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for do_good",
   "main": "index.js",
   "scripts": {
     "start:backend": "nodemon index.js",
@@ -42,5 +42,8 @@
     "workbox-routing": "^6.5.3",
     "workbox-strategies": "^6.5.3",
     "workbox-streams": "^6.5.3"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

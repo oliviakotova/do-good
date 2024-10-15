@@ -14,8 +14,8 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
-  const [setCookie] = useCookies("user");
-  //const [togle, setTogle] = useState("false");
+  const [cookies, setCookie, removeCookie] = useCookies("user");
+  const [togle, setTogle] = useState("false");
   const [showLoading, setShowLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
