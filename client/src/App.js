@@ -33,19 +33,19 @@ const App = () => {
     }
   }, [isDarkMode]);
 
-  function onThemeSwitch(e) {
-    console.log(e.target.checked);
+  //function onThemeSwitch(e) {
+  //console.log(e.target.checked);
 
-    if (e.target.checked) {
-      setDarkMode("true");
-      localStorage.setItem("DarkMode", "true");
-    } else {
-      localStorage.setItem("DarkMode", "false");
+  // if (e.target.checked) {
+  //   setDarkMode("true");
+  //   localStorage.setItem("DarkMode", "true");
+  // } else {
+  //  localStorage.setItem("DarkMode", "false");
 
-      console.log("setting to false");
-      setDarkMode("false");
-    }
-  }
+  //  console.log("setting to false");
+  //  setDarkMode("false");
+  // }
+  //}
 
   return (
     <>
