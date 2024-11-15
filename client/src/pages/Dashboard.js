@@ -1,24 +1,23 @@
-import Curd from "react-tinder-card";
+import TinderCard from "react-tinder-card"; // Исправлен импорт
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import ChatContainer from "../components/ChatContainer";
 import axios from "axios";
 import Utils from "../Utilities";
+
 let API_URL = Utils.API_URL;
+
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [identifiedUsers, setIdentifiedUsers] = useState(null);
   const [lastDirection, setLastDirection] = useState();
   const [cookies] = useCookies(["user"]);
-
   const userId = cookies.UserId;
-  //console.log(userId)
+
   const getUser = async () => {
     try {
       await axios
-        .get(`${API_URL}/user`, {
-          params: { userId },
-        })
+        .get(`${API_URL}/user`, { params: { userId } })
         .then((response) => {
           setUser(response.data);
         });
@@ -27,9 +26,6 @@ const Dashboard = () => {
     }
   };
 
-  //console.log('1', user)
-
-  // get all identified users
   const getIdentifiedUsers = async () => {
     try {
       const response = await axios.get(`${API_URL}/identified-users`, {
@@ -50,13 +46,6 @@ const Dashboard = () => {
       getIdentifiedUsers();
     }
   }, [user]);
-  useEffect(() => {
-    getUser();
-    getIdentifiedUsers();
-  }, [user, identifiedUsers]);
-
-  //console.log("user", user);
-  //console.log("identified users", identifiedUsers);
 
   const updateMatches = async (matchedUserId) => {
     try {
@@ -70,25 +59,21 @@ const Dashboard = () => {
     }
   };
 
-  //console.log(user);
-
   const swiped = (direction, swipedUserId) => {
     if (direction === "right") {
       updateMatches(swipedUserId);
     }
-    //console.log("removing: " + nameToDelete);
     setLastDirection(direction);
   };
 
   const outOfFrame = (name) => {
     console.log(name + " left the screen!");
   };
-  // matched users ids + logged user
+
   const matchedUserIds = user?.matches
     .map(({ user_id }) => user_id)
     .concat(userId);
 
-  //filter for matching users
   const filteredIdentifiedUsers = identifiedUsers?.filter(
     (identifiedUser) => !matchedUserIds.includes(identifiedUser.user_id)
   );
@@ -100,23 +85,36 @@ const Dashboard = () => {
           <ChatContainer user={user} />
           <div className="swipe-container">
             <div className="curd-container">
-              {filteredIdentifiedUsers?.map((identifiedUser) => (
-                <Curd
-                  className="swipe"
-                  key={identifiedUser.user_id}
-                  onSwipe={(dir) => swiped(dir, identifiedUser.user_id)}
-                  onCardLeftScreen={() => outOfFrame(identifiedUser.first_name)}
-                >
-                  <div
-                    style={{
-                      backgroundImage: "url(" + identifiedUser.url + ")",
-                    }}
-                    className="curd"
-                  >
-                    <h3>{identifiedUser.first_name}</h3>
-                  </div>
-                </Curd>
-              ))}
+              {filteredIdentifiedUsers?.length > 0 ? (
+                filteredIdentifiedUsers.map((identifiedUser) => {
+                  if (!identifiedUser.url) {
+                    return (
+                      <p key={identifiedUser.user_id}>No image available</p>
+                    );
+                  }
+                  return (
+                    <TinderCard
+                      className="swipe"
+                      key={identifiedUser.user_id}
+                      onSwipe={(dir) => swiped(dir, identifiedUser.user_id)}
+                      onCardLeftScreen={() =>
+                        outOfFrame(identifiedUser.first_name)
+                      }
+                    >
+                      <div
+                        style={{
+                          backgroundImage: `url(${identifiedUser.url})`,
+                        }}
+                        className="curd"
+                      >
+                        <h3>{identifiedUser.first_name}</h3>
+                      </div>
+                    </TinderCard>
+                  );
+                })
+              ) : (
+                <p>No users available to swipe</p>
+              )}
               <div className="swipe-info">
                 {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
               </div>
