@@ -14,7 +14,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
-  const [setCookie] = useCookies("user");
+  //const [ setCookie] = useCookies("user");
+  const [, setCookie] = useCookies(["AuthToken", "UserId"]);
+
   //const [togle, setTogle] = useState("false");
   const [showLoading, setShowLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -51,22 +53,31 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       // stop showing the loading spinner
       setShowLoading(false);
 
-      setCookie("AuthToken", response.data.token);
-      setCookie("UserId", response.data.userId);
+      if (response.data && response.data.token && response.data.userId) {
+        setCookie("AuthToken", response.data.token);
+        setCookie("UserId", response.data.userId);
+      }
 
       //if email and password right
       const success = response.status === 201;
 
-      //then when singin will load with navigate (react-router-dom) onboarding page
+      //then when signin will load with navigate (react-router-dom) onboarding page
       if (success && isSignUp) navigate("/onboarding");
 
       if (success && !isSignUp) navigate("/dashboard");
       window.location.reload();
     } catch (error) {
-      console.log(error);
-      setError(error.response.data);
+      console.log("Error:", error);
+
+      // Improved error handling with optional chaining
+      if (error.response && error.response.data) {
+        setError(error.response.data); // Use error message from server if available
+      } else {
+        setError("An unexpected error occurred. Please try again later."); // Fallback error message
+      }
     }
   };
+
   return (
     <div className="auth-modal">
       <div className="close-icon" onClick={handleClick}>

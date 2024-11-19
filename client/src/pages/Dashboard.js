@@ -1,4 +1,4 @@
-import TinderCard from "react-tinder-card"; // Исправлен импорт
+import TinderCard from "react-tinder-card";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import ChatContainer from "../components/ChatContainer";
@@ -46,6 +46,10 @@ const Dashboard = () => {
       getIdentifiedUsers();
     }
   }, [user]);
+  useEffect(() => {
+    getUser();
+    getIdentifiedUsers();
+  }, [user, identifiedUsers]);
 
   const updateMatches = async (matchedUserId) => {
     try {
