@@ -77,8 +77,8 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:8080",
-    "https://dogood-done.herokuapp.com",
-    "https://dogood-done-admin.herokuapp.com",
+    "https://dogood-client-c0dd5e308b90.herokuapp.com",
+    "https://dogood-admin-b1d5d0ac3f03.herokuapp.com",
   ],
   // origin: true,
   optionsSuccessStatus: 200,

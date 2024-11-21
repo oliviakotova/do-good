@@ -46,10 +46,6 @@ const Dashboard = () => {
       getIdentifiedUsers();
     }
   }, [user]);
-  useEffect(() => {
-    getUser();
-    getIdentifiedUsers();
-  }, [user, identifiedUsers]);
 
   const updateMatches = async (matchedUserId) => {
     try {
