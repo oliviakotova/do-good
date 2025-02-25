@@ -1,8 +1,12 @@
-# DO-GOOD-done
+# Overview
 
-Do good volunteering app is a platform where people in need can place their request of help and its details and volunteers who can see that list of tasks in their local and willing to provide help in their free time.
+Do good is a platform where people in need can place their request of help and its details and volunteers who can see that list of tasks in their local and willing to provide help in their free time. User authentication is available so you can signup or signing to your account with an email address and found volunteers or people who need help.
+# Features
+👉 Users can sign up and create a personal profile as a volunteer or person who need help.
+👉 Volunteer can viev all people who need help and start conversation/chat about time and place the help needed.
+👉 Administrators have the ability to efficiently view, edit and delete and create accounts or messages if needed.
 
-The tools used to implement this project and provide a feature rich experience are:
+# Tools used to implement this project and provide a feature rich experience are:
 FrontEnd —— ReactJS
 BackEnd ——express NodeJS
 Database —— MongoDB Atlas
